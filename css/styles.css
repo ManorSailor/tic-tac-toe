@@ -1,0 +1,150 @@
+/* ============= Globals ============= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  --violet: #170528;
+  --light-violet: #210935;
+  --lightest-violet: #411665;
+  --slate: #8892B0;
+  --light-slate: #A8B2D1;
+  --lightest-slate: #CCD6F6;
+  --white: #FFFFFF;
+  --blue: #64DAFF;
+
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 2rem;
+  --fs-xxl: 5rem;
+
+  --square-size: 200px;
+  --square-border: 2px solid var(--light-slate);
+}
+
+body {
+  font-weight: 400;
+  font-size: var(--fs-md);
+  color: var(--lightest-slate);
+  background-color: var(--violet);
+  font-family: 'Raleway', 'sans-serif';
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* ============= Typography ============= */
+a,
+p,
+span {
+  display: inline-block;
+  color: var(--lightest-slate);
+}
+
+/* ============= Utility Classes ============= */
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  /* border: 2px solid red; */
+}
+
+.opaque {
+  opacity: 0.5;
+}
+
+.winner {
+  color: var(--blue) !important;
+}
+
+.tie {
+  animation: blink 250ms linear infinite;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ============= Navbar ============= */
+.nav-header {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-header > a {
+  font-size: var(--fs-xl);
+  transition: color 200ms ease-in-out;
+}
+
+.nav-header > a:hover {
+  color: var(--blue);
+}
+
+/* ============= Board ============= */
+.board {
+  width: 400px;
+  height: 400px;
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  user-select: none;
+}
+
+.board > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: var(--fs-xxl);
+  font-weight: 800;
+}
+
+.board > *:nth-child(n + 1) {
+  border-right: var(--square-border);
+  border-bottom: var(--square-border);
+}
+
+.board > *:nth-child(3n) {
+  border-right: none;
+}
+
+.board > *:nth-child(n + 7) {
+  border-bottom: none;
+}
+
+/* ============= Footer ============= */
+.scores {
+  text-align: center;
+  display: flex;
+  gap: 4rem;
+  margin: 0 auto;
+}
+
+.scores > p {
+  font-size: var(--fs-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scores > p > span {
+  font-size: var(--fs-xl);
+}
